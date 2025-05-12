@@ -21,11 +21,11 @@ void setup() {
 
   if (!SD.begin(SD_CS_PIN)) {
     Serial.println("SD card initialization failed!");
-    digitalWrite(LED_PIN, HIGH);  // LED ON to indicate error
+    digitalWrite(LED_PIN, HIGH);  
   } else {
     Serial.println("SD card initialized.");
     sdAvailable = true;
-    digitalWrite(LED_PIN, LOW);   // LED OFF
+    digitalWrite(LED_PIN, LOW);  
   }
 
   Serial.println("Press the button to start recording...");
@@ -38,7 +38,7 @@ String getNextAvailableFilename() {
       return filename;
     }
   }
-  return "";  // No available slot
+  return "";  
 }
 
 void loop() {
@@ -56,7 +56,7 @@ void loop() {
 
   if (sdAvailable && digitalRead(BUTTON_PIN) == LOW) {
     Serial.println("Recording started...");
-    delay(200); // debounce
+    delay(200); 
 
     for (int i = 0; i < SAMPLE_COUNT; i++) {
       samples[i] = analogRead(PPG_PIN);
